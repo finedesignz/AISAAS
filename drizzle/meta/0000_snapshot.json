@@ -52,12 +52,8 @@
           "tableFrom": "profiles",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -70,26 +66,20 @@
           "name": "Users can update own profile.",
           "as": "PERMISSIVE",
           "for": "UPDATE",
-          "to": [
-            "public"
-          ],
+          "to": ["public"],
           "using": "(auth.uid() = id)"
         },
         "Users can insert their own profile.": {
           "name": "Users can insert their own profile.",
           "as": "PERMISSIVE",
           "for": "INSERT",
-          "to": [
-            "public"
-          ]
+          "to": ["public"]
         },
         "Profiles are viewable by self.": {
           "name": "Profiles are viewable by self.",
           "as": "PERMISSIVE",
           "for": "SELECT",
-          "to": [
-            "public"
-          ]
+          "to": ["public"]
         }
       },
       "isRLSEnabled": true
@@ -124,12 +114,8 @@
           "tableFrom": "stripe_customers",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -137,9 +123,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "stripe_customers_stripe_customer_id_key": {
-          "columns": [
-            "stripe_customer_id"
-          ],
+          "columns": ["stripe_customer_id"],
           "nullsNotDistinct": false,
           "name": "stripe_customers_stripe_customer_id_key"
         }
