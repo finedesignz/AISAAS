@@ -5,6 +5,9 @@
     WebsiteDescription,
   } from "./../../config"
 
+  import { Auth } from "@supabase/auth-ui-svelte"
+  import { sharedAppearance, oauthProviders } from "./login/login_config"
+
   const ldJson = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -220,6 +223,7 @@
       `,
     },
   ]
+  let { data } = $props()
 </script>
 
 <svelte:head>
@@ -295,6 +299,21 @@
         </a>
       </div>
     </div>
+  </div>
+</div>
+<div class="max-w-lg mx-auto my-10">
+  <Auth
+    supabaseClient={data.supabase}
+    view="sign_in"
+    redirectTo={`${data.url}/auth/callback`}
+    providers={oauthProviders}
+    socialLayout="horizontal"
+    showLinks={false}
+    appearance={sharedAppearance}
+    additionalData={undefined}
+  />
+  <div class="text-l text-slate-800 mt-4 text-center">
+    <a class="underline" href="/login/forgot_password">Forgot password?</a>
   </div>
 </div>
 <div class="min-h-[60vh]">
